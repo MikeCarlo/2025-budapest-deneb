@@ -5,18 +5,16 @@
   "layer": [
     {
       "mark": {
-        "type": "bar",
+        "type": "rect",
         "opacity": 0.3
       }
     },
     {
       "mark": {
-        "type": "bar"
+        "type": "rect"
       },
       "encoding": {
-        "y": {
-          "field": "Margin__highlight"
-        },
+       
         "opacity": {
           "condition": {
             "test": {
@@ -31,19 +29,30 @@
     },
     {
       "mark": {
-        "type": "text",
-        "size": 12,
-        "yOffset": -5
+        "type": "text"
       },
       "encoding": {
-        "text": {
-          "field": "Margin",
-          "format": ",.3s"
+        "text":{"field":"Margin__highlight",
+        "format":",.2s"},
+      
+        "opacity": {
+          "condition": {
+            "test": {
+              "field": "__selected__",
+              "equal": "off"
+            },
+            "value": 0.3
+          },
+          "value": 1
         }
       }
     }
   ],
   "encoding": {
+    "y": {
+      "field": "Category",
+      "type": "nominal"
+    },
     "x": {
       "field": "Year Month",
       "type": "nominal",
@@ -51,16 +60,12 @@
       "axis": {
         "labelAngle": 0,
         "format": "%m.%Y",
-        "tickCount": 2,
-        "labelFontSize": 8,
+
+        "labelFontSize": 10,
         "ticks": false,
-        "title": null
+        "title": null,
+        "orient":"top"
       }
-    },
-    "y": {
-      "type": "quantitative",
-      "axis": null,
-      "field": "Margin"
     }
   }
 }

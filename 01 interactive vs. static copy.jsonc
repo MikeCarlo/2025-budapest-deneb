@@ -1,0 +1,52 @@
+{
+  "data": {
+    "name": "dataset"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "opacity": 0.3,
+        "tooltip": true
+      },
+      "encoding": {
+        "x": {
+          "field": "Margin"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "bar",
+        "tooltip": true
+      },
+      "encoding": {
+        "x": {
+          "field": "Margin__highlight"
+        },
+        "opacity": {
+          "condition": {
+            "test": {
+              "field": "__selected__",
+              "equal": "off"
+            },
+            "value": 0
+          },
+          "value": 1
+        }
+      }
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "Country",
+      "type": "nominal"
+    },
+    "x": {
+      "type": "quantitative",
+      "axis": {
+        "title": "Margin"
+      }
+    }
+  }
+}

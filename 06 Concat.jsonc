@@ -46,8 +46,16 @@
           "value": 1
         },
             "tooltip": [
-      {"field": "Margin", "type": "quantitative","format":",.0f"},
-      {"field": "Margin SPLY", "type": "quantitative","format":",.0f"}
+      {
+        "field": "Margin", 
+        "type": "quantitative",
+        "format": ",.0f"
+      },
+      {
+        "field": "Margin SPLY", 
+        "type": "quantitative",
+        "format": ",.0f"
+      }
     ]
       }
     },

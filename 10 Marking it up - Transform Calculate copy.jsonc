@@ -6,7 +6,7 @@
     {
       "mark": {
         "type": "bar",
-       "opacity": 0.1,
+        "opacity": 0.1,
         "color": {
           "expr": "datum['Margin']>= datum['Margin SPLY'] ? '#ec7629' : '#b7b7b7'"
         }
@@ -38,32 +38,54 @@
           },
           "value": 1
         },
-            "tooltip": [
-      {
-        "field": "Margin", 
-        "type": "quantitative",
-        "format": ",.0f"
-      },
-      {
-        "field": "Margin SPLY", 
-        "type": "quantitative",
-        "format": ",.0f"
-      }
-    ]
+        "tooltip": [
+          {
+            "field": "Margin",
+            "type": "quantitative",
+            "format": ",.0f"
+          },
+          {
+            "field": "Margin SPLY",
+            "type": "quantitative",
+            "format": ",.0f"
+          }
+        ]
       }
     },
     {
+      "transform": [
+        {
+          "window": [
+            {
+              "op": "rank",
+              "as": "rank"
+            }
+          ],
+          "sort": [
+            {
+              "field": "Margin",
+              "order": "descending"
+            }
+          ]
+        },
+        {
+          "filter": "datum.rank <=1"
+        },
+        {
+          "calculate": "datum['Month Name'] + ' - had the highest - margin with ' + format(datum['Margin'], ',.4s')",
+          "as": "NewText"
+        }
+      ],
       "mark": {
         "type": "text",
-        "size": {
-          "expr": "datum['Margin']>= datum['Margin SPLY'] ? 12 : 0" // Conditional expression for size
-        },
-        "yOffset": -5
+        "yOffset": -35,
+        "lineBreak": "-",
+        "fontSize":11,
+        "fontWeight":600
       },
       "encoding": {
         "text": {
-          "field": "Margin",
-          "format": ",.3s"
+          "field": "NewText"
         },
         "y": {
           "field": "Margin"

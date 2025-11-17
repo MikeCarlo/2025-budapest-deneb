@@ -1,0 +1,18 @@
+{
+  "view": {
+    "stroke": false
+  },
+  "font": "Segoe UI",
+  "text": {
+    "fontSize": 11,
+    "color": "#454545"
+  },
+  "axis": {
+    "domain": false,
+    "labelFontSize": 16,
+    "labelFontWeight": 400
+  },
+  "axisX": {
+    "labelPadding": 5
+  }
+}

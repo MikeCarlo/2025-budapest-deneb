@@ -8,7 +8,7 @@
         "type": "bar",
        "opacity": 0.1,
         "color": {
-          "expr": "datum['Margin']>= datum['Margin SPLY'] ? '#ec7629' : '#b7b7b7'"
+          "expr": "datum['Margin']>= datum['Margin SPLY'] ? '#ec7629' : '#b7b7b7'" // Conditional expression for color
         }
       },
       "encoding": {
@@ -17,12 +17,26 @@
         }
       }
     },
-    {
+    {     "params": [ // Added "params" section for interaction configurations
+        {
+          "name": "jeff",
+          "select": {
+            "type": "point",
+            "on": "pointerover",
+            "clear": "pointerout"
+          }
+        },
+        {
+          "name": "sue",
+          "select": "interval"
+        }
+      ],
       "mark": {
         "type": "bar",
         "color": {
-          "expr": "datum['Margin']>= datum['Margin SPLY'] ? '#ec7629' : '#b7b7b7'"
-        }
+          "expr": "datum['Margin']>= datum['Margin SPLY'] ? '#ec7629' : '#b7b7b7'" // Conditional expression for color
+        },
+        "stroke":"#454545"
       },
       "encoding": {
         "y": {
@@ -38,17 +52,24 @@
           },
           "value": 1
         },
+        "strokeWidth": { // Added "strokeWidth" encoding
+          "condition": [
+            {
+              "param": "jeff",
+              "empty": false,
+              "value": 3
+            },
+            {
+              "param": "sue",
+              "empty": false,
+              "value": 3
+            }
+          ],
+          "value": 0
+        },
             "tooltip": [
-      {
-        "field": "Margin", 
-        "type": "quantitative",
-        "format": ",.0f"
-      },
-      {
-        "field": "Margin SPLY", 
-        "type": "quantitative",
-        "format": ",.0f"
-      }
+      {"field": "Margin", "type": "quantitative","format":",.0f"},
+      {"field": "Margin SPLY", "type": "quantitative","format":",.0f"}
     ]
       }
     },

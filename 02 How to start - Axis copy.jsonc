@@ -7,6 +7,11 @@
       "mark": {
         "type": "bar",
         "opacity": 0.3
+      },
+      "encoding": {
+        "y": { 
+          "field": "Margin"
+        }
       }
     },
     {
@@ -14,7 +19,7 @@
         "type": "bar"
       },
       "encoding": {
-        "y": {
+        "y": { 
           "field": "Margin__highlight"
         },
         "opacity": {
@@ -28,19 +33,6 @@
           "value": 1
         }
       }
-    },
-    {
-      "mark": {
-        "type": "text",
-        "size": 12,
-        "yOffset": -5
-      },
-      "encoding": {
-        "text": {
-          "field": "Margin",
-          "format": ",.3s"
-        }
-      }
     }
   ],
   "encoding": {
@@ -50,17 +42,16 @@
       "timeUnit": "yearmonth",
       "axis": {
         "labelAngle": 0,
-        "format": "%m.%Y",
-        "tickCount": 2,
-        "labelFontSize": 8,
-        "ticks": false,
+        "format": "%m.%Y", 
+        "tickCount": 0, 
+        "labelFontSize": 8, 
+        "ticks": false, 
         "title": null
       }
     },
     "y": {
       "type": "quantitative",
-      "axis": null,
-      "field": "Margin"
+      "axis": null
     }
   }
 }
