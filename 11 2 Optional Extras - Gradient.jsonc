@@ -1,0 +1,93 @@
+{
+  "data": {
+    "name": "dataset"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "area",
+        "color": {
+          "gradient": "linear",
+          "x1": 0,
+          "y1": 0, // top
+          "x2": 1,
+          "y2": 1, // bottom
+          "stops": [
+            {
+              "offset": 0.2,
+              "color": "#ec7629"
+            }, // top color
+            {
+              "offset": 0.8,
+              "color": "#ffab5781"
+            } // bottom color
+          ]
+        }
+      },
+      "encoding": {
+        "y": {
+          "field": "Margin__highlight"
+        },
+        "opacity": {
+          "condition": {
+            "test": {
+              "field": "__selected__",
+              "equal": "off"
+            },
+            "value": 0
+          },
+          "value": 1
+        },
+        "tooltip": [
+          {
+            "field": "Margin",
+            "type": "quantitative",
+            "format": ",.0f"
+          },
+          {
+            "field": "Margin SPLY",
+            "type": "quantitative",
+            "format": ",.0f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "size": {
+          "expr": "datum['Margin']>= datum['Margin SPLY'] ? 12 : 0" // Conditional expression for size
+        },
+        "yOffset": -5
+      },
+      "encoding": {
+        "text": {
+          "field": "Margin",
+          "format": ",.3s"
+        },
+        "y": {
+          "field": "Margin"
+        }
+      }
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "Year Month",
+      "type": "nominal",
+      "timeUnit": "yearmonth",
+      "axis": {
+        "labelAngle": 0,
+        "format": "%m.%Y",
+        "tickCount": 2,
+        "labelFontSize": 8,
+        "ticks": false,
+        "title": null
+      }
+    },
+    "y": {
+      "type": "quantitative",
+      "axis": null
+    }
+  }
+}

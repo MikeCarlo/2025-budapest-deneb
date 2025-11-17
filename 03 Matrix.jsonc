@@ -1,0 +1,67 @@
+{
+  "data": {
+    "name": "dataset"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "opacity": 0.3
+      },
+      "encoding": {}
+    },
+    {
+      "mark": {
+        "type": "bar"
+      },
+      "encoding": {
+        "y": {
+          "field": "Margin__highlight"
+        },
+        "opacity": {
+          "condition": {
+            "test": {
+              "field": "__selected__",
+              "equal": "off"
+            },
+            "value": 0
+          },
+          "value": 1
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "size": 12,
+        "yOffset": -5
+      },
+      "encoding": {
+        "text": {
+          "field": "Margin",
+          "format": ",.3s"
+        }
+      }
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "Year Month",
+      "type": "nominal",
+      "timeUnit": "yearmonth",
+      "axis": {
+        "labelAngle": 0,
+        "format": "%m.%Y",
+        "tickCount": 2,
+        "labelFontSize": 8,
+        "ticks": false,
+        "title": null
+      }
+    },
+    "y": {
+      "type": "quantitative",
+      "axis": null,
+      "field": "Margin"
+    }
+  }
+}

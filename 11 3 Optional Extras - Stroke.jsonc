@@ -1,0 +1,99 @@
+{
+  "data": {
+    "name": "dataset"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "opacity": 0.1,
+        "color": {
+          "expr": "datum['Margin']>= datum['Margin SPLY'] ? '#ec7629' : '#b7b7b7'" // Conditional expression for color
+        }
+      },
+      "encoding": {
+        "y": {
+          "field": "Margin"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "bar",
+        "color": {
+          "expr": "datum['Margin']>= datum['Margin SPLY'] ? '#ec7629' : '#b7b7b7'" // Conditional expression for color
+        },
+        "cornerRadiusEnd": 5,
+            "stroke": "#000000",
+        "strokeWidth": 0.85
+      },
+      "encoding": {
+        "y": {
+          "field": "Margin__highlight"
+        },
+        "opacity": {
+          "condition": {
+            "test": {
+              "field": "__selected__",
+              "equal": "off"
+            },
+            "value": 0
+          },
+          "value": 1
+        },
+        "tooltip": [
+          {
+            "field": "Margin",
+            "type": "quantitative",
+            "format": ",.0f"
+          },
+          {
+            "field": "Margin SPLY",
+            "type": "quantitative",
+            "format": ",.0f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "size": {
+          "expr": "datum['Margin']>= datum['Margin SPLY'] ? 24 : 0" // Conditional expression for size
+        },
+        "yOffset": -10,
+        "fill": "#b7b7b7",
+        "stroke": "#000000",
+        "strokeWidth": 0.55
+      },
+      "encoding": {
+        "text": {
+          "field": "Margin",
+          "format": ",.3s"
+        },
+        "y": {
+          "field": "Margin"
+        }
+      }
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "Year Month",
+      "type": "nominal",
+      "timeUnit": "yearmonth",
+      "axis": {
+        "labelAngle": 0,
+        "format": "%m.%Y",
+        "tickCount": 2,
+        "labelFontSize": 8,
+        "ticks": false,
+        "title": null
+      }
+    },
+    "y": {
+      "type": "quantitative",
+      "axis": null
+    }
+  }
+}

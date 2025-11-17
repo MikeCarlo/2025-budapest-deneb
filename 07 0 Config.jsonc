@@ -1,0 +1,218 @@
+{
+  "data": {
+    "name": "dataset"
+  },
+  "title": {
+    "text": "Monthly KPIs",
+    "fontSize": 16,
+    "anchor": "middle",
+    "color": "#454545",
+    "subtitle": "   ",
+    "subtitleColor": "#454545"
+  },
+  "vconcat": [
+    {
+      "title": {
+        "text": "Margin",
+        "anchor": "start",
+        "color": "#454545",
+        "subtitle": "Orange when CY > PY",
+        "subtitleColor": "#454545",
+        "offset":15
+      },
+      "width": 400,
+      "height": 180,
+      "layer": [
+        {
+          "mark": {
+            "type": "bar",
+            "opacity": 0.1,
+            "color": {
+              "expr": "datum['Margin']>= datum['Margin SPLY'] ? '#ec7629' : '#b7b7b7'" // Conditional expression for color
+            }
+          },
+          "encoding": {
+            "y": {
+              "field": "Margin"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "bar",
+            "color": {
+              "expr": "datum['Margin']>= datum['Margin SPLY'] ? '#ec7629' : '#b7b7b7'" // Conditional expression for color
+            }
+          },
+          "encoding": {
+            "y": {
+              "field": "Margin__highlight"
+            },
+            "opacity": {
+              "condition": {
+                "test": {
+                  "field": "__selected__",
+                  "equal": "off"
+                },
+                "value": 0
+              },
+              "value": 1
+            },
+            "tooltip": [
+              {
+                "field": "Margin",
+                "type": "quantitative",
+                "format": ",.0f"
+              },
+              {
+                "field": "Margin SPLY",
+                "type": "quantitative",
+                "format": ",.0f"
+              }
+            ]
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "size": {
+              "expr": "datum['Margin']>= datum['Margin SPLY'] ? 12 : 0" // Conditional expression for size
+            },
+            "yOffset": -5
+          },
+          "encoding": {
+            "text": {
+              "field": "Margin",
+              "format": ",.3s"
+            },
+            "y": {
+              "field": "Margin"
+            }
+          }
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "Year Month",
+          "type": "nominal",
+          "timeUnit": "yearmonth",
+          "axis": {
+            "labelAngle": 0,
+            "format": "%m.%Y",
+            "tickCount": 2,
+            "labelFontSize": 8,
+            "ticks": false,
+            "title": null
+          }
+        },
+        "y": {
+          "type": "quantitative",
+          "axis": null
+        }
+      }
+    },
+    {
+      "title": {
+        "text": "Sales Amount",
+        "anchor": "start",
+        "color": "#454545",
+        "subtitle": "  ",
+        "subtitleColor": "#454545",
+        "offset":15
+      },
+      "width": 400,
+      "height": 180,
+      "layer": [
+        {
+          "mark": {
+            "type": "bar",
+            "opacity": 0.1,
+            "color": "#b7b7b7"
+          },
+          "encoding": {
+            "y": {
+              "field": "Sales Amount"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "bar",
+            "color": "#b7b7b7"
+          },
+          "encoding": {
+            "y": {
+              "field": "Sales Amount__highlight"
+            },
+            "opacity": {
+              "condition": {
+                "test": {
+                  "field": "__selected__",
+                  "equal": "off"
+                },
+                "value": 0
+              },
+              "value": 1
+            },
+            "tooltip": [
+              {
+                "field": "Sales Amount",
+                "type": "quantitative",
+                "format": ",.0f"
+              },
+              {
+                "field": "Margin SPLY",
+                "type": "quantitative",
+                "format": ",.0f"
+              }
+            ]
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "yOffset": -5
+          },
+          "encoding": {
+            "text": {
+              "field": "Sales Amount",
+              "format": ",.3s"
+            },
+            "y": {
+              "field": "Sales Amount"
+            },
+            "opacity": {
+              "condition": {
+                "test": {
+                  "field": "__selected__",
+                  "equal": "off"
+                },
+                "value": 0.2
+              },
+              "value": 1
+            }
+          }
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "Year Month",
+          "type": "nominal",
+          "timeUnit": "yearmonth",
+          "axis": {
+            "labelAngle": 0,
+            "format": "%m.%Y",
+            "tickCount": 2,
+            "labelFontSize": 8,
+            "ticks": false,
+            "title": null
+          }
+        },
+        "y": {
+          "type": "quantitative",
+          "axis": null
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "data": {
+    "name": "dataset"
+  },
+  "mark": {
+    "type": "bar"
+  },
+  "encoding": {
+    "y": {
+      "field": "Country",
+      "type": "nominal"
+    },
+    "x": {
+      "field": "Margin",
+      "type": "quantitative"
+    }
+  }
+}
